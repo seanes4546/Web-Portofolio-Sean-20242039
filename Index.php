@@ -46,22 +46,18 @@
     </head>
     
     <body>
-
         <?php
         $servername = "localhost";
-        $username = "root";       // Diubah dari "username" ke "root" bawaan XAMPP
-        $password = "";           // Diubah dari "password" ke kosong "" bawaan XAMPP
-        $dbname = "portofolio_db";
+        $username = "user20242039";
+        $password = "OHIvkK";
+        $dbname = "user20242039";
 
-        // Membuat koneksi
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Memeriksa koneksi
         if ($conn->connect_error) {
             die("Koneksi gagal: " . $conn->connect_error);
         }
 
-        // Mengambil seluruh data konten untuk ditampilkan di web
         $contents = [];
         $result = $conn->query("SELECT * FROM web_content");
         if ($result && $result->num_rows > 0) {
@@ -70,7 +66,6 @@
             }
         }
 
-        // Ambil data untuk Chart.js
         $labels = [];
         $votes = [];
 
@@ -82,10 +77,8 @@
             }
         }
 
-        // Mengubah array PHP menjadi format JSON agar bisa dibaca oleh JavaScript
         $json_labels = json_encode($labels);
         $json_votes = json_encode($votes);
-
         ?>
             
         <header>
@@ -398,7 +391,5 @@
             observer.observe(section);
             });
         </script>
-
     </body>
-
 </html>
